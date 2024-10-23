@@ -112,3 +112,18 @@ ggplot(comparison_long[1:40,], aes(x = `z-score`, y = Ingenuity.Canonical.Pathwa
   
   # Customize the x-axis breaks for z-score (e.g., 0, 0.25, 0.5, 0.75, 1)
   scale_x_continuous(breaks = seq(z_min, z_max, by = 2))
+##step 8 to 10 is for data visualization side by side
+## below given optional steps for getting the pathways are changed in same direction
+# New Step: Identify pathways with the same z-score direction (both positive or both negative)
+combined_data <- combined_data %>%
+  mutate(same_direction = ifelse(sign(`z-score.x`) == sign(`z-score.y`), "Same Direction", "Opposite Direction"))
+
+# Filter pathways that are in the same direction
+same_direction_pathways <- combined_data %>%
+  filter(same_direction == "Same Direction")
+
+# Optionally, view the pathways in the same direction
+head(same_direction_pathways)
+
+#write the pathways in same direction
+write.xlsx(same_direction_pathways, "same.direction.IPA.pathways.MS.Qns.xlsx")
