@@ -4,7 +4,7 @@ library(dplyr)
 library(tidyr)
 library(data.table)
 library(openxlsx)
-
+setwd("/Users/teestanaskar/Dropbox/Teesta/Placenta/Human.Placenta/bothsex/Proteomics/IPA/padj<0.05")
 # Step 1: Load your datasets
 MS <- read.xlsx("cannonical_pathway_MS_padj.<0.05.xlsx", sheet = 1)
 QNS <- read.xlsx("cannonical_pathway_QNS_padj<0.05.xlsx", sheet = 1)
